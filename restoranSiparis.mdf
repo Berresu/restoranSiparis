@@ -1,0 +1,83 @@
+create table musteriler(
+	musteriId int primary key identity(1,1),
+	adSoyad nvarchar(100),
+	telefonNo nvarchar(15)
+);
+
+create table yemekler(
+	yemekId int primary key identity(1,1),
+	yemekAdi nvarchar(100),
+	yemekFiyat nvarchar(15)
+);
+
+create table siparisler(
+	siparisId int primary key identity(1,1),
+	musteriId int foreign key references musteriler(musteriId),
+	yemekId int foreign key references yemekler(yemekId),
+	adet int
+);
+
+insert into musteriler(adSoyad, telefonNo)
+values('Nevzat Çelik','05111111111');
+
+insert into musteriler(adSoyad, telefonNo)
+values('Yekta Akın','05222222222');
+
+insert into musteriler(adSoyad, telefonNo)
+values('Demir Yiğit','05333333333');
+
+insert into yemekler(yemekAdi,yemekFiyat)
+values('Lagos Buğlama','70')
+
+insert into yemekler(yemekAdi,yemekFiyat)
+values('Ceviz Soslu Semiz Otu Salatası','30');
+
+insert into yemekler(yemekAdi,yemekFiyat)
+values('Fava','45');
+
+insert into yemekler(yemekAdi,yemekFiyat)
+values('Fırın Helva','40');
+
+insert into yemekler(yemekAdi,yemekFiyat)
+values('Mercimek Çorbası','30');
+
+insert into yemekler(yemekAdi,yemekFiyat)
+values('Levrek','50');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('1','5','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('1','1','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('1','3','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('1','4','2');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('2','6','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('2','2','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('2','4','2');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('3','5','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('3','1','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('3','6','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('3','3','1');
+
+insert into siparisler(musteriId,yemekId,adet)
+values('3','4','3');
+
+select musteriId,yemekId,adet from siparisler;
